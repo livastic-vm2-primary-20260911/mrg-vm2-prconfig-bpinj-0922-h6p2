@@ -1,0 +1,12 @@
+merge_queue:
+  mode: parallel
+  max_parallel_checks: 1
+queue_rules:
+  - name: VM2 trusted base injection
+    queue_conditions:
+      - base = main
+    merge_conditions:
+      - base = main
+    merge_method: merge
+    merge_bot_account: livastic-vm2-primary-20260911
+    branch_protection_injection_mode: queue
