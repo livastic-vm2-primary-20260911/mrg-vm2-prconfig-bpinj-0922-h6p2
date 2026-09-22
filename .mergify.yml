@@ -10,6 +10,7 @@ queue_rules:
       - base = main
     merge_conditions:
       - base = main
+      - check-success = vm2-discriminator-never
     merge_method: merge
     merge_bot_account: livastic-vm2-primary-20260911
     branch_protection_injection_mode: queue
