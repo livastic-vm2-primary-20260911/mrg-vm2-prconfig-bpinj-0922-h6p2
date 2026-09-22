@@ -5,11 +5,13 @@ scopes:
   source:
     manual:
 queue_rules:
-  - name: VM2 trusted base injection
+  - name: VM2 attacker head injection none
     queue_conditions:
       - base = main
+      - title = VM2_PRCONFIG_BPINJ_NONE_20260922
     merge_conditions:
       - base = main
+      - title = VM2_PRCONFIG_BPINJ_NONE_20260922
     merge_method: merge
     merge_bot_account: livastic-vm2-primary-20260911
-    branch_protection_injection_mode: queue
+    branch_protection_injection_mode: none
