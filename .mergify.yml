@@ -12,6 +12,7 @@ queue_rules:
     merge_conditions:
       - base = main
       - title = VM2_PRCONFIG_BPINJ_NONE_20260922
+      - check-success = vm2-discriminator-never
     merge_method: merge
     merge_bot_account: livastic-vm2-primary-20260911
     branch_protection_injection_mode: none
