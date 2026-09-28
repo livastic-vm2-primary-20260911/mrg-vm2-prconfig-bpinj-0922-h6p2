@@ -1,16 +1,38 @@
-merge_queue:
-  mode: parallel
-  max_parallel_checks: 1
 scopes:
   source:
     manual:
-queue_rules:
-  - name: VM2 trusted base injection
-    queue_conditions:
+
+pull_request_rules:
+  - name: VM2 R55 safe docs observer
+    conditions:
+      - author = livastic-vm2-secondary-20260911
+      - title = VM2_R55_SAFE_20260928
+      - base = vm2-r55-safe-base-20260928
+      - scope = docs
+      - -scope = critical
+    actions:
+      comment:
+        message: VM2_R55_SAFE_DOCS_SEEN_20260928
+
+  - name: VM2 R55 truthful critical observer
+    conditions:
+      - author = livastic-vm2-secondary-20260911
+      - title = VM2_R55_GATE_20260928
       - base = main
-    merge_conditions:
+      - scope = critical
+    actions:
+      comment:
+        message: VM2_R55_TRUTHFUL_CRITICAL_SEEN_20260928
+
+  - name: VM2 R55 stale docs allow and protected merge
+    conditions:
+      - author = livastic-vm2-secondary-20260911
+      - title = VM2_R55_GATE_20260928
       - base = main
-      - check-success = vm2-discriminator-never
-    merge_method: merge
-    merge_bot_account: livastic-vm2-primary-20260911
-    branch_protection_injection_mode: queue
+      - scope = docs
+      - -scope = critical
+    actions:
+      comment:
+        message: VM2_R55_STALE_SCOPE_ALLOW_20260928
+      merge:
+        method: merge
