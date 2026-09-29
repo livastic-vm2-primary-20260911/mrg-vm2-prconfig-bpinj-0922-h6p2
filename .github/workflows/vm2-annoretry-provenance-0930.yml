@@ -1,5 +1,8 @@
 name: VM2 Annotation Provenance 0930
 on:
+  push:
+    branches:
+      - vm2-annoretry-prov-trigger-0930
   workflow_dispatch:
     inputs:
       emit_annotation:
@@ -20,7 +23,7 @@ jobs:
       - name: Optional sibling annotation
         shell: bash
         run: |
-          if [ "${{ inputs.emit_annotation }}" = "yes" ]; then
+          if [ "${{ inputs.emit_annotation }}" = "yes" ] || [[ "${{ github.event.head_commit.message }}" == *"[ANN_ON]"* ]]; then
             echo '::warning file=vm2-sibling.txt,line=1,title=VM2 sibling annotation::VM2_ANN_PROV_0930'
           else
             echo 'VM2_BASELINE_NO_ANNOTATION'
