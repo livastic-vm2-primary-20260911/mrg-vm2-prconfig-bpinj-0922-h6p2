@@ -23,4 +23,4 @@ commands_restrictions:
   copy:
     conditions:
       - sender = livastic-vm2-secondary-20260911
-      - scope != security-critical
+      - scope != security-*
