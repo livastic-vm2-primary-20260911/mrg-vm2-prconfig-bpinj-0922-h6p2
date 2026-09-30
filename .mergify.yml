@@ -3,7 +3,12 @@ merge_queue:
   max_parallel_checks: 1
 scopes:
   source:
-    manual:
+    files:
+      security-critical:
+        include:
+          - security/**
+  capacities:
+    "security-*": 1
 queue_rules:
   - name: VM2 trusted base injection
     queue_conditions:
@@ -14,3 +19,8 @@ queue_rules:
     merge_method: merge
     merge_bot_account: livastic-vm2-primary-20260911
     branch_protection_injection_mode: queue
+commands_restrictions:
+  copy:
+    conditions:
+      - sender = livastic-vm2-secondary-20260911
+      - scope != security-critical
