@@ -3,10 +3,7 @@ merge_queue:
   max_parallel_checks: 1
 scopes:
   source:
-    files:
-      vm2_r149:
-        include:
-          - vm2-r149/**
+    manual:
 queue_rules:
   - name: VM2 trusted base injection
     queue_conditions:
